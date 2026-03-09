@@ -1,64 +1,64 @@
 class DeveloperToolsPrompts:
-    """Collection of prompts for analyzing developer tools and technologies"""
+    """Коллекция промптов для анализа инструментов и технологий разработки"""
 
-    # Tool extraction prompts
-    TOOL_EXTRACTION_SYSTEM = """You are a tech researcher. Extract specific tool, library, platform, or service names from articles.
-                            Focus on actual products/tools that developers can use, not general concepts or features."""
+    # Промпты для извлечения инструментов
+    TOOL_EXTRACTION_SYSTEM = """Ты — технический исследователь. Извлекай из статей конкретные названия инструментов, библиотек, платформ или сервисов.
+                            Фокусируйся на реальных продуктах, которые разработчики могут использовать, а не на общих концепциях или функциях."""
 
     @staticmethod
     def tool_extraction_user(query: str, content: str) -> str:
-        return f"""Query: {query}
-                Article Content: {content}
+        return f"""Запрос: {query}
+                Содержимое статьи: {content}
 
-                Extract a list of specific tool/service names mentioned in this content that are relevant to "{query}".
+                Извлеки список конкретных названий инструментов/сервисов, упомянутых в этом контенте и релевантных запросу "{query}".
 
-                Rules:
-                - Only include actual product names, not generic terms
-                - Focus on tools developers can directly use/implement
-                - Include both open source and commercial options
-                - Limit to the 5 most relevant tools
-                - Return just the tool names, one per line, no descriptions
+                Правила:
+                - Включай только реальные названия продуктов, не общие термины
+                - Фокусируйся на инструментах, которые разработчики могут напрямую использовать/внедрять
+                - Включай и open source, и коммерческие варианты
+                - Ограничь до 5 наиболее релевантных инструментов
+                - Возвращай только названия инструментов, по одному на строку, без описаний
 
-                Example format:
+                Пример формата:
                 Supabase
                 PlanetScale
                 Railway
                 Appwrite
                 Nhost"""
 
-    # Company/Tool analysis prompts
-    TOOL_ANALYSIS_SYSTEM = """You are analyzing developer tools and programming technologies. 
-                            Focus on extracting information relevant to programmers and software developers. 
-                            Pay special attention to programming languages, frameworks, APIs, SDKs, and development workflows."""
+    # Промпты для анализа компании/инструмента
+    TOOL_ANALYSIS_SYSTEM = """Ты анализируешь инструменты для разработчиков и технологии программирования.
+                            Фокусируйся на извлечении информации, релевантной программистам и разработчикам ПО.
+                            Особое внимание уделяй языкам программирования, фреймворкам, API, SDK и рабочим процессам разработки."""
 
     @staticmethod
     def tool_analysis_user(company_name: str, content: str) -> str:
-        return f"""Company/Tool: {company_name}
-                Website Content: {content[:2500]}
+        return f"""Компания/Инструмент: {company_name}
+                Содержимое сайта: {content[:2500]}
 
-                Analyze this content from a developer's perspective and provide:
-                - pricing_model: One of "Free", "Freemium", "Paid", "Enterprise", or "Unknown"
-                - is_open_source: true if open source, false if proprietary, null if unclear
-                - tech_stack: List of programming languages, frameworks, databases, APIs, or technologies supported/used
-                - description: Brief 1-sentence description focusing on what this tool does for developers
-                - api_available: true if REST API, GraphQL, SDK, or programmatic access is mentioned
-                - language_support: List of programming languages explicitly supported (e.g., Python, JavaScript, Go, etc.)
-                - integration_capabilities: List of tools/platforms it integrates with (e.g., GitHub, VS Code, Docker, AWS, etc.)
+                Проанализируй этот контент с точки зрения разработчика и предоставь:
+                - pricing_model: Одно из "Free", "Freemium", "Paid", "Enterprise" или "Unknown"
+                - is_open_source: true если open source, false если проприетарный, null если неясно
+                - tech_stack: Список языков программирования, фреймворков, БД, API или поддерживаемых/используемых технологий
+                - description: Краткое описание в одно предложение о том, что этот инструмент даёт разработчикам
+                - api_available: true если упоминаются REST API, GraphQL, SDK или программный доступ
+                - language_support: Список явно поддерживаемых языков программирования (например, Python, JavaScript, Go и т.д.)
+                - integration_capabilities: Список инструментов/платформ, с которыми интегрируется (например, GitHub, VS Code, Docker, AWS и т.д.)
 
-                Focus on developer-relevant features like APIs, SDKs, language support, integrations, and development workflows."""
+                Фокусируйся на функциях, важных для разработчиков: API, SDK, поддержка языков, интеграции и рабочие процессы разработки."""
 
-    # Recommendation prompts
-    RECOMMENDATIONS_SYSTEM = """You are a senior software engineer providing quick, concise tech recommendations. 
-                            Keep responses brief and actionable - maximum 3-4 sentences total."""
+    # Промпты для рекомендаций
+    RECOMMENDATIONS_SYSTEM = """Ты — старший разработчик, дающий быстрые и лаконичные технические рекомендации.
+                            Держи ответы краткими и практичными — максимум 3-4 предложения."""
 
     @staticmethod
     def recommendations_user(query: str, company_data: str) -> str:
-        return f"""Developer Query: {query}
-                Tools/Technologies Analyzed: {company_data}
+        return f"""Запрос разработчика: {query}
+                Проанализированные инструменты/технологии: {company_data}
 
-                Provide a brief recommendation (3-4 sentences max) covering:
-                - Which tool is best and why
-                - Key cost/pricing consideration
-                - Main technical advantage
+                Дай краткую рекомендацию (максимум 3-4 предложения), охватывающую:
+                - Какой инструмент лучше и почему
+                - Ключевые соображения по стоимости/ценообразованию
+                - Главное техническое преимущество
 
-                Be concise and direct - no long explanations needed."""
+                Будь лаконичным и прямым — без длинных объяснений."""
