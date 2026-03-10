@@ -23,23 +23,23 @@ extract_tools → research → analyze → END
 ## Структура проекта
 
 ```
-advanced-agent/
+DevTools_Researcher/
 ├── main.py              # Точка входа, интерактивный цикл
 ├── requirements.txt     # Зависимости
-├── README.md
 └── src/
     ├── workflow.py      # Граф LangGraph
     ├── models.py        # Pydantic-модели (CompanyInfo, ResearchState и др.)
     ├── firecrawl_service.py  # Интеграция с Firecrawl API
     └── prompts.py       # Промпты для LLM
+├── README.md
 ```
 
 ## Установка
 
-1. Клонируйте репозиторий и перейдите в папку `advanced-agent`:
+1. Клонируйте репозиторий и перейдите в папку `DevTools_Researcher`:
 
 ```bash
-cd advanced-agent
+cd DevTools_Researcher
 ```
 
 2. Установите зависимости:
